@@ -1,9 +1,10 @@
 
 
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
 function HomePage(){
-    const [headerValue,setHeaderValue] = useState('Howdy !')
+    //const [headerValue,setHeaderValue] = useState('Howdy !')
+    const headerValue = 'Howdy !';
     useEffect(() => {
         document.title = "Home"
      }, []);

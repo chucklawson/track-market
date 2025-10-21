@@ -1,14 +1,25 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import {useState, useEffect} from 'react';
 
-const TickerButton = (props) => {
+interface TickerButtonProps{
+  key:string;
+  ticker: string;
+  costBasis: number;
+  currentQuantityOnHand: number;
+  selectTickerButtonHandler(tickerIn:string, currentQuantityOnHandIn:string, totalCostIn:string): void;
+  backgroundColor: string;
+}
+
+const TickerButton = (props:TickerButtonProps) => {
 
 
  const [buttonClassValues,setButtonClassValues] = useState('')
-  
- const onSelectHandler = (event)=> {
+
+
+  // Took out argument for the on click event because not being used.
+ //const onSelectHandler = (event: MouseEvent<HTMLButtonElement>)=> {
+  const onClickeEventHandler = ()=> {
      {/*props.selectTickerButtonHandler(event.target.innerText);*/}
-     let totalCost=props.currentQuantityOnHand*props.costBasis
-     
+     const totalCost:number=props.currentQuantityOnHand*props.costBasis
      props.selectTickerButtonHandler(props.ticker,      
       props.currentQuantityOnHand.toFixed(3),
       totalCost.toFixed(2)
@@ -17,7 +28,7 @@ const TickerButton = (props) => {
 
   useEffect(() => {  
     setButtonClassValues(props.backgroundColor+' p-1 rounded-md ml-2 mr-2 mt-1 text-white hover:text-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-stone-200 duration-300')
-}, []);
+}, [props.backgroundColor]);
 
     if(buttonClassValues.length<1)
     {
@@ -26,9 +37,9 @@ const TickerButton = (props) => {
     }
 
     return (
-        < button className={buttonClassValues} style={{ width: '140px' }} onClick={onSelectHandler}>
+        < button className={buttonClassValues} style={{ width: '140px' }} onClick={onClickeEventHandler}>
           <div>
-             {props.costBasis === ('0.0') ?
+             {props.costBasis === (0.0) ?
               <div>
                  {props.ticker}  Unk, {props.currentQuantityOnHand}
               </div>:

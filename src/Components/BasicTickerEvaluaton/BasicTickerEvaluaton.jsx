@@ -5,7 +5,7 @@ import TickerButton from '../TickerButton/TickerButton.jsx';
 import SimpleButton from '../SimpleButton/SimpleButton.jsx'
 import TradingRangeIndicator from '../TradingRangeIndicator/TradingRangeIndicator.jsx';
 import InvestmentComposedChar from '../InvestmentCharts/InvestmentComposedChart.jsx';
-import StockQuote from '../StockQuote/StockQuote.jsx';
+import StockQuote from '../StockQuote/StockQuote.tsx';
 import BatchQuote from '../ApiCalls/BatchQutoe.jsx'
 import {dailyValues, bollingerBands,getRsiChartData,getStochasticChartData,getLwChartData,getPriceToEarningsChartData} from '../../lib/CalculateAverages.jsx'
 import upGreenRight from '../../srcImages/UpGreenRight.png'
