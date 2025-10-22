@@ -14,7 +14,7 @@ import RelativeStrengthIndexChart from '../InvestmentCharts/RelativeStrengthInde
 import StochasitcOscillatorChart from '../InvestmentCharts/StochasticOscillatorChart.jsx'
 
 
-import { goBackSpecificNumberOfDays, findTheHighValueBasedOnDate, getAHistoricDateBySubtractingFromNow, findTheLowValueBasedOnDate, convertDateForDateInputPicker } from '../../lib/GetValuesBasedOnDate.jsx'
+import { goBackSpecificNumberOfDays, findTheHighValueBasedOnDate, getAHistoricDateBySubtractingFromNow, findTheLowValueBasedOnDate, convertDateForDateInputPicker } from '../../Lib/GetValuesBasedOnDate.ts'
 import LarryWilliamsChart from '../InvestmentCharts/LarryWilliamsChart.jsx';
 import PriceEarningsChart from '../InvestmentCharts/PriceEarningsChart.jsx';
 import {calculateOverallProfitAndLoss} from '../../lib/ProfitLoss/CalculateOverallProfitLoss.jsx'

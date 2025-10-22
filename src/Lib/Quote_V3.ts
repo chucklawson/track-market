@@ -6,7 +6,6 @@ export default interface Quote_V3 {
   price?: number;
   changePercentage?: number;
   change?: number;
-  volume?: number;
   dayLow?: number;
   dayHigh?: number;
   yearHigh?: number;
@@ -15,7 +14,13 @@ export default interface Quote_V3 {
   priceAvg50?: number;
   priceAvg200?: number;
   exchange?:string
-  open?: number;
-  previousClose?: number;
-  timestamp?: number | bigint;
+  volume?: number | bigint,
+  avgVolume?: number | bigint,
+  open?: number,
+  previousClose?: number,
+  eps?:number,
+  pe?: number,
+  earningsAnnouncement?: string,
+  sharesOutstanding?: number | bigint,
+  timestamp?: number | bigint,
   }

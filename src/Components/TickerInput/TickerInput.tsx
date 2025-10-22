@@ -7,7 +7,7 @@ import { getAHistoricDateBySubtractingFromNow,convertDateForDateInputPicker,getD
 interface TickerInputProps{
   onTickerValue(tickerValue:string ,startDate:string ,endDate:string ,adjustedStartDate:string): void;
   currentTicker: string;
-  startDate:string;
+  startDate:strin
   endDate:string;
   containerBackGround:string;
 }
