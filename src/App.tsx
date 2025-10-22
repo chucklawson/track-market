@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+//import React, { useState, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
-import home from './srcImages/home.png'
+//import home from './srcImages/home.png'
 import CurrentHoldings from './Pages/CurrentHoldings/CurrentHoldings.jsx';
 import DividendEntries from './Pages/DividendEntries/DividendEntries.jsx';
 import ClubPreferences from './Pages/ClubPreferences/ClubPreferences.jsx';
 import ClubHolds from './Pages/ClubHolds/ClubHolds.jsx';
-import upGreenRight from './srcImages/UpGreenRight.png'
-import downRedRight from './srcImages/DownRedRight.png'
+//import upGreenRight from './srcImages/UpGreenRight.png'
+//import downRedRight from './srcImages/DownRedRight.png'
 import RootLayout from './Pages/RootLayout.jsx';
 import HomePage from './Pages/HomePage/HomePage.jsx';
 import MagicFormula from './Pages/MagicFormula/MagicFormula.jsx';

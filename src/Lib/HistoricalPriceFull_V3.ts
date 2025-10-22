@@ -1,6 +1,6 @@
 
 export default interface HistoricalPriceFull_V3 {
-  symbol: string;
+  symbol?: string;
   date?: string
   open?: number;
   high?: number;

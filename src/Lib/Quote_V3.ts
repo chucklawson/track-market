@@ -1,7 +1,7 @@
 
 
 export default interface Quote_V3 {
-  symbol: string;
+  symbol?: string;
   name?: string;
   price?: number;
   changePercentage?: number;

@@ -1,6 +1,6 @@
 
 export default interface KeyMetrics_V3{
-  symbol: string,
+  symbol?: string,
   date?: string,
   fiscalYear?: string,
   period?: string,

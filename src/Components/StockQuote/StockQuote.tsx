@@ -4,7 +4,21 @@ import type KeyMetrics_V3 from '../../Lib/KeyMetrics_V3.ts';
 import type HistoricalPriceFull_V3 from '../../Lib/HistoricalPriceFull_V3.ts';
 
 
-const StockQuote = props => {
+
+//<StockQuote stockSymbol={tickerToGet} onSetCurrentQuote={onSetCurrentQuote} latestStartDate={startDate} latestEndDate={endDate} adjustedStartDate={adjustedStartDate}/>
+
+//const onSetCurrentQuote=(currentQuoteIn,timeSeriesIn,adjustedTimeSeriesIn,statmentAnalysisKeyMetrics)
+interface  StockQuoteProps{
+  stockSymbol: string;
+  onSetCurrentQuote(currentQuoteIn:Quote_V3,timeSeriesIn:HistoricalPriceFull_V3,adjustedTimeSeriesIn:HistoricalPriceFull_V3,statmentAnalysisKeyMetrics:KeyMetrics_V3 ):void;
+  latestStartDate: string;
+  latestEndDate: string;
+  adjustedStartDate: string;
+
+}
+
+
+const StockQuote = (props:StockQuoteProps) => {
   
     const uniqueValue = '25a5fa6deb331d46e42609787aa281fe';    
     const currentInfo= `https://financialmodelingprep.com/api/v3/quote/${props.stockSymbol}?apikey=${uniqueValue}`;
@@ -22,6 +36,8 @@ const StockQuote = props => {
     const [timeSeriesEntries, setTimeSeriesEntries] = useState({});
     const [adjustedTimeSeriesEntries, setAdjustedTimeSeriesEntries] = useState({});
     const [statementAnalysisKeyMetricsEntries,setStatementAnalysisKeyMetricsEntries]= useState({});
+
+
     //const [larryWilliamsEntries,setLarryWilliamsEntries]= useState({});
 /*
 /*
@@ -95,7 +111,7 @@ const [currentQuote, setcurrentQuote] = useState({});
           //console.log('The FOURTH object length: '+ data[3].length)
 
         } 
-      }).catch(function (error) {
+      }).catch(function () {
         // if there's an error, log it
         //console.log('Logging Error')
         //console.log(error);
@@ -106,16 +122,16 @@ const [currentQuote, setcurrentQuote] = useState({});
 
 
     //const setDatObjet = (theQuote,timeSeries,adjustedTimeSeries,statmentAnalysis,larryWilliams)=>{
-    const setDatObjet = (theQuote:Quote_V3,timeSeries:HistoricalPriceFull_V3,adjustedTimeSeries:HistoricalPriceFull_V3,statmentAnalysis:KeyMetrics_V3)=>{
-        //console.log("theQuote: " + theQuote[0].open)
-        setcurrentQuote(theQuote)        
-        setTimeSeriesEntries(timeSeries);
-        setAdjustedTimeSeriesEntries(adjustedTimeSeries);
-        setStatementAnalysisKeyMetricsEntries(statementAnalysisKeyMetrics);
-        //setLarryWilliamsEntries(larryWilliams);
-        //props.onSetCurrentQuote(theQuote,timeSeries,adjustedTimeSeries,statmentAnalysis,larryWilliams);
-        props.onSetCurrentQuote(theQuote,timeSeries,adjustedTimeSeries,statmentAnalysis);
-    }
+  const setDatObjet = (theQuote:Quote_V3,timeSeries:HistoricalPriceFull_V3,adjustedTimeSeries:HistoricalPriceFull_V3,statmentAnalysis:KeyMetrics_V3)=>{
+    //console.log("theQuote: " + theQuote[0].open)
+    setcurrentQuote(theQuote)
+    setTimeSeriesEntries(timeSeries);
+    setAdjustedTimeSeriesEntries(adjustedTimeSeries);
+    setStatementAnalysisKeyMetricsEntries(statmentAnalysis);
+    //setLarryWilliamsEntries(larryWilliams);
+    //props.onSetCurrentQuote(theQuote,timeSeries,adjustedTimeSeries,statmentAnalysis,larryWilliams);
+    props.onSetCurrentQuote(currentQuote,timeSeriesEntries,adjustedTimeSeriesEntries,statementAnalysisKeyMetricsEntries);
+  }
 
     useEffect (() => {
         //console.log('currentQuote: ' + currentQuote.symbol)
