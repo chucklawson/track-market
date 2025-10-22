@@ -8,7 +8,7 @@ export default class GetValuesBasedOnDate {
 
     getAHistoricDateBySubtractingFromNow(numberOfDaysToGoBack: number ,oneYearHistoryChecked:boolean):typeof date
     {
-        const date =new Date();
+        const date = new Date();
         
         if(oneYearHistoryChecked === true)
         {
@@ -118,10 +118,8 @@ export default class GetValuesBasedOnDate {
         return hightValue;
     }
 
-    convertDateForDateInputPicker(dateIn:typeof Date):string
+    convertDateForDateInputPicker(dateIn: Date):string
     {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
         const isoDate=dateIn.toISOString()
         const convertedDate=isoDate.substring(0,isoDate.indexOf('T'))
         return convertedDate;
