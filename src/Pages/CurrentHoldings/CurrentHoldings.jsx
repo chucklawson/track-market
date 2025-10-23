@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import upGreenRight from '../../srcImages/UpGreenRight.png'
 import downRedRight from '../../srcImages/DownRedRight.png'
-import BasicTickerEvaluaton from '../../Components/BasicTickerEvaluaton/BasicTickerEvaluaton.jsx'
+import BasicTickerEvaluaton from '../../Components/BasicTickerEvaluaton/BasicTickerEvaluaton'
 
 const CURRENT_HOLDINGS = 
   [
@@ -16,6 +16,7 @@ const CURRENT_HOLDINGS =
       ticker: "VOO",
       costBasis: '439.06',
       unitsOnHand: 46,
+
       calculateAccumulatedProfitLoss: true,
       baseYield: '',
     },
