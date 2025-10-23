@@ -1,5 +1,5 @@
 import React, {useState, useEffect, type FormEvent, type ChangeEvent} from 'react';
-import { getAHistoricDateBySubtractingFromNow,convertDateForDateInputPicker,getDate_2017,getDate_2021,getDate_2025 } from '../../Lib/GetValuesBasedOnDate.jsx'
+import { getAHistoricDateBySubtractingFromNow,convertDateForDateInputPicker,getDate_2017,getDate_2021,getDate_2025 } from './../../types/GetValuesBasedOnDate.js'
 
 
 //<TickerInput  onTickerValue={onTickerChangeHandler} currentTicker={tickerToGet} startDate={startDate} endDate={endDate}
