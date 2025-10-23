@@ -1,19 +1,8 @@
-import React, {useState, useEffect, type FormEvent, type ChangeEvent} from 'react';
-import { getAHistoricDateBySubtractingFromNow,convertDateForDateInputPicker,getDate_2017,getDate_2021,getDate_2025 } from './../../types/GetValuesBasedOnDate.js'
+import React, { useState, useEffect } from 'react';
+import { getAHistoricDateBySubtractingFromNow,convertDateForDateInputPicker,getDate_2017,getDate_2021,getDate_2025 } from '../../Lib/GetValuesBasedOnDate.jsx'
 
 
-//<TickerInput  onTickerValue={onTickerChangeHandler} currentTicker={tickerToGet} startDate={startDate} endDate={endDate}
-//containerBackGround= {props.buttonBackgroundColor}></TickerInput>
-
-interface TickerInputProps{
-  onTickerValue(tickerValue:string ,startDate:string ,endDate:string ,adjustedStartDate:string): void;
-  currentTicker: string;
-  startDate:string
-  endDate:string;
-  containerBackGround:string;
-}
-
-const TickerInput = (props:TickerInputProps) => {
+const TickerInput = props => {
   const [enteredValue, setEnteredValue] = useState('');
     const [isValid, setIsValid] = useState(true);
     const [startDate, setStartDate] = useState('');
@@ -39,18 +28,16 @@ const TickerInput = (props:TickerInputProps) => {
   },
   [isValid,startDateIsValid,endDateIsValid])
 
-    const tickerInputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const tickerInputChangeHandler = event => {
        // event.preventDefault();
-
-      const target = event.target as HTMLInputElement;
-      if(target.value.trim() !== undefined)
-      {
-        setIsValid(true);
-        setEnteredValue(target.value);
-      }
+    if(event.target.value.trim() !== undefined)
+    {
+      setIsValid(true);      
+      setEnteredValue(event.target.value);
+    }
   };
 
-  const formSubmitHandler = (event:FormEvent) => {
+  const formSubmitHandler = event => {
     event.preventDefault();
     if((enteredValue.trim().length===0) ||
     (startDate.length===0)||
@@ -77,11 +64,11 @@ const TickerInput = (props:TickerInputProps) => {
       // reduce start date by one year..
       
       //console.log('startDate before returning: ' + startDate)
-      const year = parseInt(startDate.substring(0,startDate.indexOf('-')))
+      let year = parseInt(startDate.substring(0,startDate.indexOf('-')))
      //console.log('year by itself: ' + year)
-      const adjustedYear=year - 1;
+      let adjustedYear=year - 1;
       //console.log('adjustedYear: ' + adjustedYear)
-      const adjustedStartDate= adjustedYear+startDate.substring(startDate.indexOf('-'))
+      let adjustedStartDate= adjustedYear+startDate.substring(startDate.indexOf('-'))
       //console.log('adjustedStartDate: ' + adjustedStartDate)
       
       
@@ -145,7 +132,7 @@ const TickerInput = (props:TickerInputProps) => {
     //setEndDateIsValid(true);    
   }
 
-    const startDateChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const startDateChangeHandler = (event) => {
       setStartDate(event.target.value);
       if(event.target.value.length>0)
       {
@@ -154,7 +141,7 @@ const TickerInput = (props:TickerInputProps) => {
       }
     };
 
-    const endDateChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const endDateChangeHandler = (event) => {
       setEndDate(event.target.value);
       if(event.target.value.length>0)
       {

@@ -12,7 +12,6 @@ import RootLayout from './Pages/RootLayout.jsx';
 import HomePage from './Pages/HomePage/HomePage.jsx';
 import MagicFormula from './Pages/MagicFormula/MagicFormula.jsx';
 import Banks from './Pages/Banks/Banks.jsx';
-import Simulator from './Pages/Simulator/Simulator.jsx';
 import WatchList from './Pages/WatchList/WatchList.jsx';
 import HistoricalDividends from './Pages/HistoricalDividends/HistoricalDividends.jsx';
 import StatementSpreadSheet from './Pages/StatementSpreadSheet/StatementSpreadSheet.jsx';
@@ -34,7 +33,6 @@ const router = createBrowserRouter([
       {path: '/banks', element: <Banks/>},
       {path: '/watchlist', element: <WatchList/>},
       {path: '/historicaldividendentries', element: <HistoricalDividends/>},
-      {path: '/simulator', element: <Simulator/>},
       {path: '/statmententries', element: <StatementSpreadSheet/>},
       {path: '/summaryentries', element: <SummarySpreadSheet/>}
     ]
