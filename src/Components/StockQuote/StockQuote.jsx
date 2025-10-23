@@ -1,31 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import type Quote_V3 from "../../Lib/Quote_V3.ts"
-import type KeyMetrics_V3 from '../../Lib/KeyMetrics_V3.ts';
-import type HistoricalPriceFull_V3 from '../../Lib/HistoricalPriceFull_V3.ts';
 
-
-
-//<StockQuote stockSymbol={tickerToGet} onSetCurrentQuote={onSetCurrentQuote} latestStartDate={startDate} latestEndDate={endDate} adjustedStartDate={adjustedStartDate}/>
-
-//const onSetCurrentQuote=(currentQuoteIn,timeSeriesIn,adjustedTimeSeriesIn,statmentAnalysisKeyMetrics)
-interface  StockQuoteProps{
-  stockSymbol: string;
-  onSetCurrentQuote(currentQuoteIn:Quote_V3,timeSeriesIn:HistoricalPriceFull_V3,adjustedTimeSeriesIn:HistoricalPriceFull_V3,statmentAnalysisKeyMetrics:KeyMetrics_V3 ):void;
-  latestStartDate: string;
-  latestEndDate: string;
-  adjustedStartDate: string;
-
-}
-
-
-const StockQuote = (props:StockQuoteProps) => {
+const StockQuote = props => {
   
     const uniqueValue = '25a5fa6deb331d46e42609787aa281fe';    
-    const currentInfo= `https://financialmodelingprep.com/api/v3/quote/${props.stockSymbol}?apikey=${uniqueValue}`;
-    const timeSeries = `https://financialmodelingprep.com/api/v3/historical-price-full/${props.stockSymbol}?from=${props.latestStartDate}&to=${props.latestEndDate}&apikey=${uniqueValue}`
-    const adjustedTimeSeries = `https://financialmodelingprep.com/api/v3/historical-price-full/${props.stockSymbol}?from=${props.adjustedStartDate}&to=${props.latestEndDate}&apikey=${uniqueValue}`
-    const statementAnalysisKeyMetrics = `https://financialmodelingprep.com/api/v3/key-metrics/${props.stockSymbol}?period=quarter&apikey=${uniqueValue}`
-    //const williams =`https://financialmodelingprep.com/api/v3/technical_indicator/1day/${props.stockSymbol}?type=williams&period=10&apikey=${uniqueValue}`
+    let currentInfo= `https://financialmodelingprep.com/api/v3/quote/${props.stockSymbol}?apikey=${uniqueValue}`;
+    let timeSeries = `https://financialmodelingprep.com/api/v3/historical-price-full/${props.stockSymbol}?from=${props.latestStartDate}&to=${props.latestEndDate}&apikey=${uniqueValue}`
+    let adjustedTimeSeries = `https://financialmodelingprep.com/api/v3/historical-price-full/${props.stockSymbol}?from=${props.adjustedStartDate}&to=${props.latestEndDate}&apikey=${uniqueValue}`
+    let statementAnalysisKeyMetrics = `https://financialmodelingprep.com/api/v3/key-metrics/${props.stockSymbol}?period=quarter&apikey=${uniqueValue}`
+    let williams =`https://financialmodelingprep.com/api/v3/technical_indicator/1day/${props.stockSymbol}?type=williams&period=10&apikey=${uniqueValue}`
 
     //console.log('currentInfo:  ' + currentInfo)
     //console.log('thetimeSeriesQuote:  ' + timeSeries)
@@ -36,9 +18,7 @@ const StockQuote = (props:StockQuoteProps) => {
     const [timeSeriesEntries, setTimeSeriesEntries] = useState({});
     const [adjustedTimeSeriesEntries, setAdjustedTimeSeriesEntries] = useState({});
     const [statementAnalysisKeyMetricsEntries,setStatementAnalysisKeyMetricsEntries]= useState({});
-
-
-    //const [larryWilliamsEntries,setLarryWilliamsEntries]= useState({});
+    const [larryWilliamsEntries,setLarryWilliamsEntries]= useState({});
 /*
 /*
 /*
@@ -111,7 +91,7 @@ const [currentQuote, setcurrentQuote] = useState({});
           //console.log('The FOURTH object length: '+ data[3].length)
 
         } 
-      }).catch(function () {
+      }).catch(function (error) {
         // if there's an error, log it
         //console.log('Logging Error')
         //console.log(error);
@@ -122,16 +102,16 @@ const [currentQuote, setcurrentQuote] = useState({});
 
 
     //const setDatObjet = (theQuote,timeSeries,adjustedTimeSeries,statmentAnalysis,larryWilliams)=>{
-  const setDatObjet = (theQuote:Quote_V3,timeSeries:HistoricalPriceFull_V3,adjustedTimeSeries:HistoricalPriceFull_V3,statmentAnalysis:KeyMetrics_V3)=>{
-    //console.log("theQuote: " + theQuote[0].open)
-    setcurrentQuote(theQuote)
-    setTimeSeriesEntries(timeSeries);
-    setAdjustedTimeSeriesEntries(adjustedTimeSeries);
-    setStatementAnalysisKeyMetricsEntries(statmentAnalysis);
-    //setLarryWilliamsEntries(larryWilliams);
-    //props.onSetCurrentQuote(theQuote,timeSeries,adjustedTimeSeries,statmentAnalysis,larryWilliams);
-    props.onSetCurrentQuote(currentQuote,timeSeriesEntries,adjustedTimeSeriesEntries,statementAnalysisKeyMetricsEntries);
-  }
+    const setDatObjet = (theQuote,timeSeries,adjustedTimeSeries,statmentAnalysis)=>{
+        //console.log("theQuote: " + theQuote[0].open)
+        setcurrentQuote(theQuote)        
+        setTimeSeriesEntries(timeSeries);
+        setAdjustedTimeSeriesEntries(adjustedTimeSeries);
+        setStatementAnalysisKeyMetricsEntries(statementAnalysisKeyMetrics);
+        //setLarryWilliamsEntries(larryWilliams);
+        //props.onSetCurrentQuote(theQuote,timeSeries,adjustedTimeSeries,statmentAnalysis,larryWilliams);
+        props.onSetCurrentQuote(theQuote,timeSeries,adjustedTimeSeries,statmentAnalysis);
+    }
 
     useEffect (() => {
         //console.log('currentQuote: ' + currentQuote.symbol)

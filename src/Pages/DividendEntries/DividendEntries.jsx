@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import upGreenRight from '../../srcImages/UpGreenRight.png'
 import downRedRight from '../../srcImages/DownRedRight.png'
 import BasicTickerEvaluaton from '../../Components/BasicTickerEvaluaton/BasicTickerEvaluaton.jsx'
-import {calculateProjectedYield} from '../../lib/ProfitLoss/CalculateOverallProfitLoss.jsx'
+import {calculateProjectedYield} from '../../Lib/ProfitLoss/CalculateOverallProfitLoss'
 
 const CURRENT_HOLDINGS = 
   [

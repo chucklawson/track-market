@@ -5,7 +5,7 @@ import TickerButton from '../TickerButton/TickerButton.jsx';
 import SimpleButton from '../SimpleButton/SimpleButton.jsx'
 import TradingRangeIndicator from '../TradingRangeIndicator/TradingRangeIndicator.jsx';
 import InvestmentComposedChar from '../InvestmentCharts/InvestmentComposedChart.jsx';
-import StockQuote from '../StockQuote/StockQuote.tsx';
+import StockQuote from '../StockQuote/StockQuote';
 import BatchQuote from '../ApiCalls/BatchQutoe.jsx'
 import {dailyValues, bollingerBands,getRsiChartData,getStochasticChartData,getLwChartData,getPriceToEarningsChartData} from '../../lib/CalculateAverages.jsx'
 import upGreenRight from '../../srcImages/UpGreenRight.png'
@@ -14,10 +14,10 @@ import RelativeStrengthIndexChart from '../InvestmentCharts/RelativeStrengthInde
 import StochasitcOscillatorChart from '../InvestmentCharts/StochasticOscillatorChart.jsx'
 
 
-import { goBackSpecificNumberOfDays, findTheHighValueBasedOnDate, getAHistoricDateBySubtractingFromNow, findTheLowValueBasedOnDate, convertDateForDateInputPicker } from '../../Lib/GetValuesBasedOnDate.ts'
+import { goBackSpecificNumberOfDays, findTheHighValueBasedOnDate, getAHistoricDateBySubtractingFromNow, findTheLowValueBasedOnDate, convertDateForDateInputPicker } from '../../Lib/GetValuesBasedOnDate.jsx'
 import LarryWilliamsChart from '../InvestmentCharts/LarryWilliamsChart.jsx';
 import PriceEarningsChart from '../InvestmentCharts/PriceEarningsChart.jsx';
-import {calculateOverallProfitAndLoss} from '../../lib/ProfitLoss/CalculateOverallProfitLoss.jsx'
+import {calculateOverallProfitAndLoss} from '../../Lib/ProfitLoss/CalculateOverallProfitLoss'
 import {calculateBuyPoints} from '../../lib/ProfitLoss/CalculateBuyPoints.jsx'
 
 const GRAPH_SIZE_FACTOR = .48

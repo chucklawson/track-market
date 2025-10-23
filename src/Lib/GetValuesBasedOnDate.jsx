@@ -1,14 +1,11 @@
-//import type Quote_V3 from './Quote_V3.ts'
-//import type KeyMetrics_V3 from './KeyMetrics_V3.ts';
-import type HistoricalPriceFull_V3 from './HistoricalPriceFull_V3.ts';
-
 export default class GetValuesBasedOnDate {
-    constructor(){
+    constructor(dateIn) {
+        this.date = dateIn;
     }
 
-    getAHistoricDateBySubtractingFromNow(numberOfDaysToGoBack: number ,oneYearHistoryChecked:boolean):typeof date
+    getAHistoricDateBySubtractingFromNow(numberOfDaysToGoBack,oneYearHistoryChecked)
     {
-        const date = new Date();
+        let date =new Date();
         
         if(oneYearHistoryChecked === true)
         {
@@ -21,16 +18,16 @@ export default class GetValuesBasedOnDate {
         return date;
     }
 
-    goBackSpecificNumberOfDays(adjustedTimeSeriesIn: HistoricalPriceFull_V3[], numberOfDaysToGoBack: number)
+    goBackSpecificNumberOfDays(adjustedTimeSeriesIn, numberOfDaysToGoBack)
     {
-        const adjustedTimeSeries=adjustedTimeSeriesIn;
+        let adjustedTimeSeries=adjustedTimeSeriesIn;
 
         if(adjustedTimeSeries.length<2)
         {
             return -1.0;
         }
 
-        const dateToLocate = getAHistoricDateBySubtractingFromNow(numberOfDaysToGoBack,false);
+        let dateToLocate = getAHistoricDateBySubtractingFromNow(numberOfDaysToGoBack,false);
 
         /*
         console.log('adjustedTimeSeries stringified: '+ JSON.stringify(adjustedTimeSeries[0]))
@@ -41,19 +38,17 @@ export default class GetValuesBasedOnDate {
         }
         */
 
-        const value = findAValueBasedOnDate(dateToLocate,adjustedTimeSeries)
+        let value = findAValueBasedOnDate(dateToLocate,adjustedTimeSeries)
         return value;
     }
 
-    findAValueBasedOnDate(dateToLocate: Date,timeSeries: HistoricalPriceFull_V3[]): number | undefined
+    findAValueBasedOnDate(dateToLocate,timeSeries)
     {
-      let value: number|undefined;
+        let value=0.0;
         //console.log('findAValueBasedOnDate, dateToLocate: ' + dateToLocate.toLocaleDateString());
         for(let i=0;i<timeSeries.length;++i)
         {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-expect-error
-          const tempDate=new Date(timeSeries[i].date)
+            let tempDate=new Date(timeSeries[i].date)            
             if(tempDate<=dateToLocate)
             {
                 value = timeSeries[i].adjClose;
@@ -68,24 +63,18 @@ export default class GetValuesBasedOnDate {
         return value;
     }
 
-    findTheLowValueBasedOnDate(dateToLocate:Date,timeSeries:HistoricalPriceFull_V3[])
+    findTheLowValueBasedOnDate(dateToLocate,timeSeries)
     {
         let lowValue=10000000.0;
         //console.log('findTheHighValueBasedOnDate, dateToLocate: ' + dateToLocate.toLocaleDateString());
         for(let i=0;i<timeSeries.length;++i)
         {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-expect-error
-            const tempDate=new Date(timeSeries[i].date)
+            let tempDate=new Date(timeSeries[i].date)            
             if(tempDate>dateToLocate)
             {
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-expect-error
-              if( timeSeries[i].adjClose < lowValue)
+                if( parseFloat(timeSeries[i].adjClose) < lowValue)
                 {
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-expect-error
-                  lowValue = timeSeries[i].adjClose;
+                    lowValue = parseFloat(timeSeries[i].adjClose);
                     //console.log('Set low value: ' + lowValue);
                 }
             }
@@ -93,24 +82,18 @@ export default class GetValuesBasedOnDate {
         return lowValue;
     }
 
-    findTheHighValueBasedOnDate(dateToLocate: Date,timeSeries:HistoricalPriceFull_V3[])
+    findTheHighValueBasedOnDate(dateToLocate,timeSeries)
     {
         let hightValue=0.0;
         //console.log('findTheHighValueBasedOnDate, dateToLocate: ' + dateToLocate.toLocaleDateString());
         for(let i=0;i<timeSeries.length;++i)
         {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-expect-error
-            const tempDate=new Date(timeSeries[i].date)            
+            let tempDate=new Date(timeSeries[i].date)            
             if(tempDate>dateToLocate)
             {
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-expect-error
-              if( timeSeries[i].adjClose > hightValue)
+                if( parseFloat(timeSeries[i].adjClose) > hightValue)
                 {
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  // @ts-expect-error
-                  hightValue = timeSeries[i].adjClose;
+                    hightValue = parseFloat(timeSeries[i].adjClose);
                     //console.log('Set high value: ' + hightValue);
                 }
             }
@@ -118,43 +101,43 @@ export default class GetValuesBasedOnDate {
         return hightValue;
     }
 
-    convertDateForDateInputPicker(dateIn: Date):string
+    convertDateForDateInputPicker(dateIn)
     {
-        const isoDate=dateIn.toISOString()
-        const convertedDate=isoDate.substring(0,isoDate.indexOf('T'))
+        let isoDate=dateIn.toISOString()
+        let convertedDate=isoDate.substring(0,isoDate.indexOf('T'))
         return convertedDate;
     }
 
-    getDate_2017():Date
+    getDate_2017()
     {
-        const date =new Date(Date.parse("2017-02-01T00:00:00"));
+        let date =new Date(Date.parse("2017-02-01T00:00:00"));
         //date=Date.parse("2017-02-01T00:00:00");        
         return date;
     }
 
-    getDate_2021():Date
+    getDate_2021()
     {
-        const date =new Date(Date.parse("2021-02-01T00:00:00"));
+        let date =new Date(Date.parse("2021-02-01T00:00:00"));
         //date=Date.parse("2021-02-01T00:00:00");        
         return date;
     }
 
-    getDate_2025():Date
+    getDate_2025()
     {
-        const date =new Date(Date.parse("2025-02-01T00:00:00"));
+        let date =new Date(Date.parse("2025-02-01T00:00:00"));
         //date=Date.parse("2025-02-01T00:00:00");        
         return date;
     }
 
 
-        toString() {
-        //return ("GetValuesBasedOnDate: " + this.date);
+    toString() {
+        return ("GetValuesBasedOnDate: " + this.date);
       }
   };
 
   export const { goBackSpecificNumberOfDays, getAHistoricDateBySubtractingFromNow,
                      findAValueBasedOnDate, findTheLowValueBasedOnDate, findTheHighValueBasedOnDate,
-                     convertDateForDateInputPicker,getDate_2017,getDate_2021,getDate_2025 } = new GetValuesBasedOnDate()
+                     convertDateForDateInputPicker,getDate_2017,getDate_2021,getDate_2025 } = new GetValuesBasedOnDate(Date.now)
 
 
 
